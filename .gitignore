@@ -1,0 +1,14 @@
+scraper_files
+
+data/raw_realState_data.db
+data/real_state_data_after_cleaning.csv
+data/real_state_data_scz.csv
+
+
+notebooks_scripts/utilityFunctions/realState_url.py
+notebooks_scripts/utilityFunctions/__pycache__
+
+
+src/__pycache__
+src/dash_utilities/__pycache__/
+
