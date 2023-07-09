@@ -18,16 +18,17 @@ layout = html.Div(
         dcc.Markdown(
             """
             Esta página fue creada con [Dash Open Source](https://dash.plotly.com).
-            En esta se pone a disposición una herramienta que permite estimar
-            el precio de una vivienda en la ciudad de Santa Cruz de la Sierra.
-            Tener una aproximación del valor de una propiedad es muy útil si se desea,
-            por ejemplo, vender, comprar o comparar viviendas.
-
-            El modelo fue entrenado con datos de viviendas de Santa Cruz de la Sierra,
-            principalmente casas y departamentos. Para obtener una descripción detallada
+            En esta se pone a disposición una herramienta identificar enfermedades
+            en hojas de plantas de cultivo comunes: 13 especies de plantas diferentes 
+            y hasta 17 enfermedades diferentes. El modelo de Deep Learning usado
+            fue [YOLOv7](https://arxiv.org/abs/2207.02696) con la implementación "open-source"
+            de [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7). La 
+            base de datos que se utilizó se puede encontrar en: ["PlantDoc: A Dataset for 
+            Visual Plant Disease Detection"](https://github.com/pratikkayal/PlantDoc-Dataset). 
+            
+            Para obtener una descripción detallada
             de los aspectos técnicos visitar el repositorio en GitHub del
-            proyecto. Allí se explica en detalle el proceso de recolección de datos y la
-            selección del algoritmo utilizado para la estimación, *Gradient Boosting*.
+            proyecto. 
             """,
             style={'text-align': 'justify'}
         ),
@@ -35,7 +36,7 @@ layout = html.Div(
 
         html.Div([
                 html.A(
-                    href="https://github.com/a-jimenezc/bienes_raices_scz",
+                    href="https://github.com/a-jimenezc/plant-disease-app",
                     target="_blank",
                     children=[
                         html.I(className="fab fa-github"),
@@ -54,11 +55,10 @@ layout = html.Div(
             html.H3("Sobre el Autor")
         ], style={'text-align': 'center'}),
         dcc.Markdown(
-            """Esta página web fue creada por Antonio Jimenez Caballero, un
-            ingeniero eletromecánico y docente universitario. 
-            Tiene un fuerte interés por la Ciencia de Datos y
-            su potencial para resolver necesidades cotidianas.
-            
+            """Hola, soy Antonio Jimenez y 
+            tengo un fuerte interés por la Ciencia de Datos y
+            su potencial para resolver necesidades cotidianas. En mi github encontrarás 
+            otros proyectos en los que trabajé. Estoy atento a cualquier comentario.
             """,
             style={'text-align': 'justify'}
         ),

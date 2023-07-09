@@ -1,17 +1,10 @@
-beautifulsoup4==4.12.2
-dash==2.9.3
-dash-bootstrap-components==1.4.1
-dash-leaflet==0.1.23
-Flask==2.3.2
-folium==0.14.0
-fonttools==4.39.4
-ipykernel==6.22.0
-matplotlib==3.7.1
-numpy==1.24.3
-pandas==2.0.1
-plotly==5.14.1
-scikit-learn==1.2.2
-scipy==1.10.1
-seaborn==0.12.2
-selenium==4.9.0
+dash<=2.9.3
+dash-bootstrap-components<=1.4.1
+dash-leaflet<=0.1.23
+matplotlib<=3.7.1
+numpy<=1.24.3
+pandas<=2.0.1
+plotly<=5.14.1
+onnxruntime<=1.15.1
+opencv-python<=4.8.0.74
 

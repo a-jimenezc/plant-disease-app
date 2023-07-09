@@ -1,10 +1,11 @@
 import dash
+import base64
 from dash import html, dcc, callback
 from dash.dependencies import Input, Output, State
 from src import object_detection
 
 
-dash.register_page(__name__, path='/', title="Estimador")
+dash.register_page(__name__, path='/', title="Detector")
 
 title = html.H2('Detector de Enfermedades de Plantas',
                         style={'textAlign': 'center'})
@@ -40,20 +41,59 @@ input = html.Div([dcc.Upload(
 output = html.Div([
     html.Div([
         html.Div(id='output-image-container'),
-    ]
-    ,style={
+    ],style={
                 'display': 'flex',
                 'text-align': 'center',
-                'width': '50%'
+                'width': '50%',
+                'margin-left': '25%',
                 }
     )]
+)
+
+with open("pictures/input.jpg", "rb") as f:
+    image1_data = f.read()
+    encoded_image1 = base64.b64encode(image1_data).decode("utf-8")
+
+with open("pictures/detection.png", "rb") as f:
+    image2_data = f.read()
+    encoded_image2 = base64.b64encode(image2_data).decode("utf-8")
+
+example = html.Div(
+    children=[
+        html.Div(
+            children=[
+                html.H3("Ejemplo:"),
+                html.Div(
+                    children=[
+                        html.Img(
+                            src="data:image/jpg;base64," + encoded_image1,
+                            style={"width": "50%", "display": "inline-block"},
+                        ),
+                        html.Img(
+                            src="data:image/jpg;base64," + encoded_image2,
+                            style={"width": "50%", "display": "inline-block"},
+                        ),
+                    ],
+                    style={"text-align": "center"},
+                ),
+            ],
+            style={"margin": "50px"},
+        )
+    ]
 )
 
 note_about_output = html.Div([
     html.Div([
     html.P([
     "Notas sobre el resultado:",
-    "(5) Para el año de construcción, los valores aceptados varían desde el año 2000 hasta el año 2025."
+    html.Br(),
+    '(1) Este es un proyecto en desarrollo, se recomienda utilizar varias fotografías diferentes y "promediar" el resutado.',
+    html.Br(),
+    "(2) El modelo puede identificar 13 diferentes especies de plantas y hasta 17 enfermedades.",
+    html.Br(),
+    "(3) La calidad del resultado varía dependiendo del tipo de hoja, se recomienda ver la descripción para mayor información",
+    html.Br(),
+    '(4) El valor entre 0 y 1 que se entrega con el resultado es la "confianza" que el modelo tiene sobre el mismo, cuanto mayor es este valor, mayor es dicha "confianza".'
     ])
     ],style={
                 'display': 'inline-block',
@@ -64,9 +104,8 @@ note_about_output = html.Div([
     )]
 )
 
-footnote =  html.P('Versión 1.0 | Última actualización de datos: mayo 2023.', 
-                    style={'fontSize': 10,
-                        'margin-left' : '10%'})
+footnote =  html.P('Versión 0.1, julio del 2023 | Última actualización de datos: 2020.', 
+                    style={'fontSize': 10, 'margin-left' : '10%'})
 
 layout = html.Div(children=[
     html.Br(),
@@ -74,10 +113,12 @@ layout = html.Div(children=[
     html.Div([
         html.Br(),
         input,
+        html.Br(),
         output,
         html.Br(),
-        html.Br(),
         note_about_output,
+        #html.Br(),
+        example,
         html.Br(),
         html.Br(),
         html.Br(),
@@ -86,8 +127,6 @@ layout = html.Div(children=[
 
 ])
 
-
-
 @callback(
     Output('output-image-container', 'children'),
     Input('upload-image', 'contents'),
@@ -95,25 +134,42 @@ layout = html.Div(children=[
 )
 def process_image(contents, filename):
     if contents is not None:
-
         model_path = "models/yolov7_pantdoc_100epochs.onnx"
-        img_path = '3.jpg'
-        names = ['Hoja de sarna de manzana', 'Hoja de manzana', 'Hoja de oxido de manzana', 'Mancha en hoja de pimiento',
-            'Hoja de pimiento', 'Hoja de arandano', 'Hoja de cereza', 'Mancha gris en hoja de maiz',
-            'Marchitez en hoja de maiz', 'Hoja de roya de maiz', 'Hoja de durazno', 'Tizon temprano en hoja de papa',
-            'Tizon tardio en hoja de papa', 'Hoja de papa', 'Hoja de frambuesa', 'Hoja de soja',
-            'Hoja de frijol de soja', 'Oidio en hoja de calabaza', 'Hoja de fresa', 'Tizon temprano en hoja de tomate',
-            'Mancha de Septoria en hoja de tomate', 'Mancha bacteriana en hoja de tomate',
-            'Tizon tardio en hoja de tomate', 'Virus del mosaico en hoja de tomate', 'Virus de la hoja amarilla en tomate',
-            'Hoja de tomate', 'Moho en hoja de tomate', 'Araña roja en hoja de tomate',
-            'Podredumbre negra en hoja de vid', 'Hoja de vid']
+        names = ['Hoja con sarna de manzana',
+                'Hoja de manzana',
+                'Hoja de oxido de manzana',
+                'Hoja de pimiento',
+                'Hoja con manchas de pimiento',
+                'Hoja de arandano',
+                'Hoja de cereza',
+                'Hoja con manchas grises de maiz',
+                'Hoja de mancha foliar del maiz',
+                'Hoja con oxido de maiz',
+                'Hoja de durazno',
+                'Hoja con tizon temprano de papa',
+                'Hoja con tizon temprano de papa',
+                'Hoja con tizon tardio de papa',
+                'Hoja de frambuesa',
+                'Hoja de soja',
+                'Hoja de soja',
+                'Hoja con oidio de calabaza',
+                'Hoja de fresa',
+                'Hoja con tizon temprano de tomate',
+                'Hoja con manchas de septoria de tomate',
+                'Hoja de tomate',
+                'Hoja con manchas bacterianas de tomate',
+                'Hoja con tizon tardio de tomate',
+                'Hoja con virus del mosaico de tomate',
+                'Hoja con virus amarillo del tomate',
+                'Hoja con moho de tomate',
+                'Hoja con acaros de dos manchas de tomate',
+                'Hoja de uva',
+                'Hoja de uva con podredumbre negra',
+        ]
 
         result_image = object_detection(model_path, contents, names)
 
-        # Display the grayscale image
-        return html.Div([
-            html.H5(filename),
-            html.Img(src=result_image)
-        ])
-
+        # Display the result_image
+        return html.Div([html.Img(src=result_image)])
+    
     return None

@@ -1,7 +1,8 @@
-FROM python:3.10
+FROM python:3.9
 COPY . /app
 WORKDIR /app
-RUN pip install -r requirements_app.txt
+RUN apt-get update && apt-get install libgl1 -y
+RUN pip install -r requirements.txt
 EXPOSE 8080
 ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]

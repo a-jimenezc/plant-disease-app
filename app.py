@@ -8,6 +8,8 @@ faw = "https://use.fontawesome.com/releases/v6.2.1/css/all.css"
 app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True,
 	   external_stylesheets=[dbc.themes.MINTY, faw])
 
+app.title = "my title"
+
 app.layout = html.Div([
     dcc.Loading(
 	    children=[navbar,
@@ -16,7 +18,7 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-	app.run_server(debug=True)#host="0.0.0.0", port=8080)
+	app.run_server(host="0.0.0.0", port=8080)
 
 
 
