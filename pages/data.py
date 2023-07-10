@@ -1,19 +1,15 @@
 import dash
-import base64
 from dash import html, dcc, callback
 import dash_bootstrap_components as dbc
+from src import encode_image
 
 dash.register_page(__name__, 
                    path='/data',
-                   title="Data")
+                   title="Datos")
 
-def encode_image(image_path):
-    with open(image_path, "rb") as file:
-        encoded_string = base64.b64encode(file.read()).decode("utf-8")
-    return encoded_string
 
-image1_path = "pictures/distr.png"
-image2_path = "pictures/trad.png"
+image1_path = "images/distr.png"
+image2_path = "images/trad.png"
 
 image1_encoded = encode_image(image1_path)
 image2_encoded = encode_image(image2_path)

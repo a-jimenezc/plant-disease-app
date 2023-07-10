@@ -65,11 +65,11 @@ def object_detection(model_path, raw_image, names):
 
     Args:
         model_path (str): The path to the ONNX model file.
-        raw_path (img)
+        raw_image (img)
         names (list): A list of class names for the detected objects.
 
     Returns:
-        PIL.Image.Image: The modified image with bounding boxes and labels.
+        tuple: A tuple containing the modified image with bounding boxes and labels, and the list of output texts.
     """
     session = ort.InferenceSession(model_path, providers=['CPUExecutionProvider'])
     colors = {name: [random.randint(0, 255) for _ in range(3)] for i, name in enumerate(names)}
@@ -94,6 +94,8 @@ def object_detection(model_path, raw_image, names):
     outputs = session.run(outname, inp)[0]
     ori_images = [img.copy()]
 
+    output_texts = []
+
     for i, (batch_id, x0, y0, x1, y1, cls_id, score) in enumerate(outputs):
         image = ori_images[int(batch_id)]
         box = np.array([x0, y0, x1, y1])
@@ -105,7 +107,7 @@ def object_detection(model_path, raw_image, names):
         name = names[cls_id]
         color = colors[name]
         name += ' ' + str(score)
-        
+
         cv2.rectangle(image, box[:2], box[2:], color, 2)
 
         # Split text into multiple lines if it's too long for the image width
@@ -134,4 +136,7 @@ def object_detection(model_path, raw_image, names):
         for line in lines:
             cv2.putText(image, line, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 0.75, [225, 255, 255], thickness=2)
             text_y += text_size[1] + 2
-    return Image.fromarray(ori_images[0])
+
+        output_texts.append(names[cls_id] + " " + line)
+
+    return Image.fromarray(ori_images[0]), output_texts
