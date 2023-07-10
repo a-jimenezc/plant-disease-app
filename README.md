@@ -47,6 +47,3 @@ Antonio Jimenez Caballero
 ## Contacto
 
 [Linkedin](https://www.linkedin.com/in/antonio-jimnzc/)
-
-
-hello
