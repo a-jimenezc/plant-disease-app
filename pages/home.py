@@ -130,9 +130,9 @@ layout = html.Div(children=[
 @callback(
     Output('output-image-container', 'children'),
     Input('upload-image', 'contents'),
-    State('upload-image', 'filename')
+    #State('upload-image', 'filename')
 )
-def process_image(contents, filename):
+def process_image(contents):
     if contents is not None:
         model_path = "models/yolov7_pantdoc_100epochs.onnx"
         names = ['Hoja con sarna de manzana',
