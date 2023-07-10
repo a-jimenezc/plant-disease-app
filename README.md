@@ -35,9 +35,10 @@ El siguiente es el enlace a la página web, hosting provisto por Google Cloud:
 
 Es necesario recolectar datos de diferentes especies y enfermedades relevantes en nuestra región. Con esto se puede asegurar una mayor utilidad en la herremienta.
 
+
 ## Licencia 
 
-AGPL-3.0 license 
+GNU Affero General Public License v3.0
 
 ## Autor
 
