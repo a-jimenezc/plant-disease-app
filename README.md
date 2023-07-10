@@ -31,12 +31,6 @@ El siguiente es el enlace a la página web, hosting provisto por Google Cloud:
 
   <img src="pictures/trad.png" alt="Alt text 1" width="500"/>
 
-## Puesta en producción
-
-En este paso, el modelo se hace accesible mediante una página web utilizando **Dash** como *framework*. La puesta en producción se realizó utilizando **Google Cloud Run**, el servicio *serverless* de Google. Este servicio se encarga de gestionar el contenedor **Docker** generado para la página.
-
-<img src="images/app1.png" alt="Alt text 1" width="300"/> 
-
 ## Siguientes pasos
 
 Es necesario recolectar datos de diferentes especies y enfermedades relevantes en nuestra región. Con esto se puede asegurar una mayor utilidad en la herremienta.
