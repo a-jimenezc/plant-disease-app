@@ -171,11 +171,6 @@ layout = html.Div(children=[
     Output('output-image-container', 'children'),
     Output('output-text-container', 'children'),
     Input('upload-image', 'contents'),
-<<<<<<< HEAD
-    #State('upload-image', 'filename')
-)
-def process_image(contents):
-=======
 )
 def process_image(contents):
     model_path = "models/yolov7_pantdoc_100epochs.onnx"
@@ -210,7 +205,6 @@ def process_image(contents):
             'Hoja de uva',
             'Hoja de uva con podredumbre negra',
     ]
->>>>>>> list_output
     if contents is not None:
         result_image, list_output = object_detection(model_path, contents, names)
         # Display the result_image
