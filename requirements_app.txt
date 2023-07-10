@@ -1,8 +1,0 @@
-dash<=2.9.3
-dash-bootstrap-components<=1.4.1
-matplotlib<=3.7.1
-numpy<=1.24.3
-pandas<=2.0.1
-onnxruntime<=1.15.1
-opencv-python<=4.8.0.74
-
