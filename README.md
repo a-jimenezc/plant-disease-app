@@ -6,7 +6,7 @@
 * Para tal propósito se usó el algoritmo de detección de objetos [**YOLOv7**](https://arxiv.org/abs/2207.02696) y su implementación open-source hecha por [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7).
 * El algoritmo está implementado en Pythorch, pero la inferencia se realiza usando el formato **ONNX**. Para detalles sobre el proceso de entrenamiento visitar: [yolov7_plantdoc](https://github.com/a-jimenezc/yolov7_plantdoc).
 * La base de datos utilizada fue: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). En esta se tienen **13 especies** y hasta **17 enfermedades diferentes**.
-* La página web se desplegó utilizando **docker** y el servicio *serverless* de **Google Cloud Platfom**: Cloud Run.
+* La página web se desplegó utilizando **Docker** y el servicio *serverless* de **Google Cloud Platfom**: Cloud Run.
 
 ## Requerimientos
 
