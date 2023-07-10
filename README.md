@@ -2,7 +2,7 @@
 
 ## Resumen del proyecto
 
-* Se hace disponible una página web que permite subir la fotografía de hojas de plantas y, a partir de esta,  detectar el tipo de hoja y el tipo de enfermedad de la misma.
+* SSe construye una página web que permite subir una fotografía de las hojas de una planta y, a partir de esta,  detectar el tipo de hoja y el tipo de enfermedad en la misma.
 * Para tal propósito se usó el algoritmo de detección de objetos [**YOLOv7**](https://arxiv.org/abs/2207.02696) y su implementación open-source hecha por [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7).
 * El algoritmo está implementado en Pythorch, pero la inferencia se realiza usando el formato **ONNX**. Para detalles sobre el proceso de entrenamiento visitar: [yolov7_plantdoc](https://github.com/a-jimenezc/yolov7_plantdoc).
 * La base de datos utilizada fue: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). En esta se tienen **13 especies** y hasta **17 enfermedades diferentes**.
