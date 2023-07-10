@@ -1,12 +1,20 @@
 import dash
-import base64
 from dash import html, dcc, callback
 from dash.dependencies import Input, Output, State
-from src import object_detection
-
+from src import object_detection, encode_image
 
 dash.register_page(__name__, path='/', title="Detector")
 
+# Encoding images for later use
+image1_path = "images/input.jpg"
+image2_path = "images/detection.png"
+image3_path = "images/trad.png"
+
+image1_encoded = encode_image(image1_path)
+image2_encoded = encode_image(image2_path)
+image3_encoded = encode_image(image3_path)
+
+# Building the parts for the layout
 title = html.H2('Detector de Enfermedades de Plantas',
                         style={'textAlign': 'center'})
 
@@ -41,6 +49,7 @@ input = html.Div([dcc.Upload(
 output = html.Div([
     html.Div([
         html.Div(id='output-image-container'),
+        html.Br()
     ],style={
                 'display': 'flex',
                 'text-align': 'center',
@@ -50,13 +59,18 @@ output = html.Div([
     )]
 )
 
-with open("pictures/input.jpg", "rb") as f:
-    image1_data = f.read()
-    encoded_image1 = base64.b64encode(image1_data).decode("utf-8")
-
-with open("pictures/detection.png", "rb") as f:
-    image2_data = f.read()
-    encoded_image2 = base64.b64encode(image2_data).decode("utf-8")
+output_text = html.Div([
+    html.Div([
+        html.H4('Detección:'),
+        html.Div(id='output-text-container'),
+    ],style={
+                'font-size': '20px',
+                'text-align': 'left',
+                'width': '50%',
+                'margin-left': '25%',
+                }
+    )]
+)
 
 example = html.Div(
     children=[
@@ -66,11 +80,31 @@ example = html.Div(
                 html.Div(
                     children=[
                         html.Img(
-                            src="data:image/jpg;base64," + encoded_image1,
+                            src="data:image/jpg;base64," + image1_encoded,
                             style={"width": "50%", "display": "inline-block"},
                         ),
                         html.Img(
-                            src="data:image/jpg;base64," + encoded_image2,
+                            src="data:image/jpg;base64," + image2_encoded,
+                            style={"width": "50%", "display": "inline-block"},
+                        ),
+                    ],
+                    style={"text-align": "center"},
+                ),
+            ],
+            style={"margin": "50px"},
+        )
+    ]
+)
+
+species = html.Div(
+    children=[
+        html.Div(
+            children=[
+                html.H3("Especies y enfermedades admitidas:"),
+                html.Div(
+                    children=[
+                        html.Img(
+                            src="data:image/jpg;base64," + image3_encoded,
                             style={"width": "50%", "display": "inline-block"},
                         ),
                     ],
@@ -85,13 +119,16 @@ example = html.Div(
 note_about_output = html.Div([
     html.Div([
     html.P([
-    "Notas sobre el resultado:",
+    "Notas:",
     html.Br(),
     '(1) Este es un proyecto en desarrollo, se recomienda utilizar varias fotografías diferentes y "promediar" el resutado.',
     html.Br(),
-    "(2) El modelo puede identificar 13 diferentes especies de plantas y hasta 17 enfermedades.",
+    "(2) El modelo puede identificar 13 diferentes especies de plantas y hasta 17 enfermedades. ",
+    html.Span("Abajo se encuentra la lista de las especies admitidas.", style={'font-weight': 'bold'}),
     html.Br(),
-    "(3) La calidad del resultado varía dependiendo del tipo de hoja, se recomienda ver la descripción para mayor información",
+    "(3) La calidad del resultado varía dependiendo del tipo de hoja, se recomienda ver la ",
+    html.Span("pestaña Datos ", style={'font-weight': 'bold'}),
+    "para mayor información.",
     html.Br(),
     '(4) El valor entre 0 y 1 que se entrega con el resultado es la "confianza" que el modelo tiene sobre el mismo, cuanto mayor es este valor, mayor es dicha "confianza".'
     ])
@@ -116,10 +153,13 @@ layout = html.Div(children=[
         html.Br(),
         output,
         html.Br(),
+        output_text,
+        html.Br(),
         note_about_output,
         #html.Br(),
         example,
         html.Br(),
+        species,
         html.Br(),
         html.Br(),
         footnote
@@ -129,47 +169,51 @@ layout = html.Div(children=[
 
 @callback(
     Output('output-image-container', 'children'),
+    Output('output-text-container', 'children'),
     Input('upload-image', 'contents'),
+<<<<<<< HEAD
     #State('upload-image', 'filename')
 )
 def process_image(contents):
+=======
+)
+def process_image(contents):
+    model_path = "models/yolov7_pantdoc_100epochs.onnx"
+    names = ['Hoja con sarna de manzana',
+            'Hoja de manzana',
+            'Hoja de oxido de manzana',
+            'Hoja de pimiento',
+            'Hoja con manchas de pimiento',
+            'Hoja de arandano',
+            'Hoja de cereza',
+            'Hoja con manchas grises de maiz',
+            'Hoja con mancha foliar del maiz',
+            'Hoja con oxido de maiz',
+            'Hoja de durazno',
+            'Hoja con tizon temprano de papa',
+            'Hoja con tizon temprano de papa',
+            'Hoja con tizon tardio de papa',
+            'Hoja de frambuesa',
+            'Hoja de soja',
+            'Hoja de soja',
+            'Hoja con oidio de calabaza',
+            'Hoja de fresa',
+            'Hoja con tizon temprano de tomate',
+            'Hoja con manchas de septoria de tomate',
+            'Hoja de tomate',
+            'Hoja con manchas bacterianas de tomate',
+            'Hoja con tizon tardio de tomate',
+            'Hoja con virus del mosaico de tomate',
+            'Hoja con virus amarillo del tomate',
+            'Hoja con moho de tomate',
+            'Hoja con acaros de dos manchas de tomate',
+            'Hoja de uva',
+            'Hoja de uva con podredumbre negra',
+    ]
+>>>>>>> list_output
     if contents is not None:
-        model_path = "models/yolov7_pantdoc_100epochs.onnx"
-        names = ['Hoja con sarna de manzana',
-                'Hoja de manzana',
-                'Hoja de oxido de manzana',
-                'Hoja de pimiento',
-                'Hoja con manchas de pimiento',
-                'Hoja de arandano',
-                'Hoja de cereza',
-                'Hoja con manchas grises de maiz',
-                'Hoja de mancha foliar del maiz',
-                'Hoja con oxido de maiz',
-                'Hoja de durazno',
-                'Hoja con tizon temprano de papa',
-                'Hoja con tizon temprano de papa',
-                'Hoja con tizon tardio de papa',
-                'Hoja de frambuesa',
-                'Hoja de soja',
-                'Hoja de soja',
-                'Hoja con oidio de calabaza',
-                'Hoja de fresa',
-                'Hoja con tizon temprano de tomate',
-                'Hoja con manchas de septoria de tomate',
-                'Hoja de tomate',
-                'Hoja con manchas bacterianas de tomate',
-                'Hoja con tizon tardio de tomate',
-                'Hoja con virus del mosaico de tomate',
-                'Hoja con virus amarillo del tomate',
-                'Hoja con moho de tomate',
-                'Hoja con acaros de dos manchas de tomate',
-                'Hoja de uva',
-                'Hoja de uva con podredumbre negra',
-        ]
-
-        result_image = object_detection(model_path, contents, names)
-
+        result_image, list_output = object_detection(model_path, contents, names)
         # Display the result_image
-        return html.Div([html.Img(src=result_image)])
+        return html.Img(src=result_image), dcc.Markdown("\n \n".join(list_output))
     
-    return None
+    return None, dcc.Markdown("")

@@ -20,16 +20,16 @@ El siguiente es el enlace a la página web, hosting provisto por Google Cloud:
 
 [plant-disease-app-q3sojgpqiq-uc.a.run.app](https://plant-disease-app-q3sojgpqiq-uc.a.run.app/)
 
-<img src="pictures/app.png" alt="Alt text 1" width="500"/> 
+<img src="images/app.png" alt="Alt text 1" width="500"/> 
 
 ## Base de datos: Plantdoc
 * se tienen 28 diferentes clases, con la siguiente distribución.
   
-  <img src="pictures/distr.png" alt="Alt text 1" width="500"/>
+  <img src="images/distr.png" alt="Alt text 1" width="500"/>
 
 * La base de datos original se encuentrá en inglés, por lo que fue necesario traducir. A continuación se detallan las traducciones utilizadas:
 
-  <img src="pictures/trad.png" alt="Alt text 1" width="500"/>
+  <img src="images/trad.png" alt="Alt text 1" width="500"/>
 
 ## Siguientes pasos
 
@@ -47,4 +47,3 @@ Antonio Jimenez Caballero
 ## Contacto
 
 [Linkedin](https://www.linkedin.com/in/antonio-jimnzc/)
-

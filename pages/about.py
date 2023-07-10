@@ -57,7 +57,7 @@ layout = html.Div(
         dcc.Markdown(
             """Hola, soy Antonio Jimenez y 
             tengo un fuerte interés por la Ciencia de Datos y
-            su potencial para resolver necesidades cotidianas. En mi github encontrarás 
+            su potencial para resolver necesidades cotidianas. En mi GitHub encontrarás 
             otros proyectos en los que trabajé. Estoy atento a cualquier comentario.
             """,
             style={'text-align': 'justify'}
