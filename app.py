@@ -9,6 +9,7 @@ app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True,
 	   external_stylesheets=[dbc.themes.MINTY, faw])
 
 app.title = "my title"
+print("hi")
 
 app.layout = html.Div([
     dcc.Loading(
