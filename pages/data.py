@@ -22,14 +22,25 @@ layout = html.Div([
                     html.Br(),
                     html.H2("Plantdoc Dataset"),
                     html.Br(),
-                    dcc.Markdown('PlantDoc es un conjunto de datos para la detección visual de enfermedades en plantas. Este conjunto de datos contiene un total de 2,598 puntos de datos en total, que abarcan 13 especies de plantas y hasta 17 clases de enfermedades. Para mayor información dirigirse consultar con la fuente original: ["PlantDoc: A Dataset for Visual Plant Disease Detection"](https://github.com/pratikkayal/PlantDoc-Dataset)'),
+                    dcc.Markdown('''PlantDoc es un conjunto de datos para la 
+                                 detección visual de enfermedades en plantas. 
+                                 Este conjunto de datos contiene un total de 2,598 
+                                 puntos de datos en total, que abarcan 13 especies 
+                                 de plantas y hasta 17 clases de enfermedades. 
+                                 Para mayor información dirigirse consultar con la 
+                                 fuente original: ["PlantDoc: A Dataset for Visual 
+                                 Plant Disease Detection"]
+                                 (https://github.com/pratikkayal/PlantDoc-Dataset)'''),
                     html.Br(),
                     html.H3("Distribución de los Datos"),
                     html.Br(),
                     html.Img(src=f"data:image/jpeg;base64,{image1_encoded}", 
                             style={"width": "80%"}),
                             html.Br(),
-                    html.P("La primeras 6 categorias estan 'sobrerepresentadas' y se tiene el caso contrario para las últimas 6 categorias. Esto se verá reflejado en las predicciones del modelo."),
+                    html.P('''La primeras 6 categorias estan "sobrerepresentadas" y se 
+                           tiene el caso contrario para las últimas 6 categorias. Esto 
+                           se verá reflejado en las predicciones del modelo, siendo este más preciso
+                           con las primeras.'''),
                 ],
                 style={"textAlign": "center", "marginBottom": "0px"},
             ),

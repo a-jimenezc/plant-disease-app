@@ -171,9 +171,8 @@ layout = html.Div(children=[
     Output('output-image-container', 'children'),
     Output('output-text-container', 'children'),
     Input('upload-image', 'contents'),
-    State('upload-image', 'filename')
 )
-def process_image(contents, filename):
+def process_image(contents):
     model_path = "models/yolov7_pantdoc_100epochs.onnx"
     names = ['Hoja con sarna de manzana',
             'Hoja de manzana',
@@ -183,7 +182,7 @@ def process_image(contents, filename):
             'Hoja de arandano',
             'Hoja de cereza',
             'Hoja con manchas grises de maiz',
-            'Hoja de mancha foliar del maiz',
+            'Hoja con mancha foliar del maiz',
             'Hoja con oxido de maiz',
             'Hoja de durazno',
             'Hoja con tizon temprano de papa',
@@ -211,4 +210,4 @@ def process_image(contents, filename):
         # Display the result_image
         return html.Img(src=result_image), dcc.Markdown("\n \n".join(list_output))
     
-    return None
+    return None, dcc.Markdown("")
