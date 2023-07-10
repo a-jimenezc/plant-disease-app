@@ -1,0 +1,59 @@
+# Detector de Enfermedades de Plantas
+
+## Resumen del proyecto
+
+* Se creó una página web que permite subir la fotografía de hojas de plantas para detectar el tipo de hoja y, si aplica, el tipo de enfermedad en la misma.
+* Para tal propósito se usó el algoritmo de detección de objetos [**YOLOv7**](https://arxiv.org/abs/2207.02696) y su implementación open-source hecha por [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7).
+* El algoritmo está implementado en Pythorch, pero la inferencia se realiza usando el formato **ONNX**.
+* La base de datos utilizada fue: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). En esta se tienen **13 especies** y hasta **17 enfermedades diferentes**.
+* La página web se desplegó utilizando **docker** y el servicio *serverless* de **Google Cloud Platfom**: Cloud Run.
+
+## Página Web
+
+El siguiente es el enlace a la página web, hosting provisto por Google Cloud:
+
+[plant-disease-app](https://plant-disease-app-q3sojgpqiq-uc.a.run.app/)
+
+## Requerimientos
+
+* **Versión de Python:** 3.9
+* **Librerias:** numpy, pandas, open-cv, dash, ONNX runtime.
+* **Instalación:** requirements.txt
+## Base de datos: Plantdoc
+* se tienen 28 diferentes clases, con la siguiente distribución.
+  
+  <img src="pictures/distr.png" alt="Alt text 1" width="500"/>
+
+* La base de datos original se encuentrá en inglés, por lo que fue necesario traducir. A continuación se detallan las traducciones utilizadas:
+
+  <img src="pictures/trad.png" alt="Alt text 1" width="500"/>
+
+## Puesta en producción
+
+En este paso, el modelo se hace accesible mediante una página web utilizando **Dash** como *framework*. La puesta en producción se realizó utilizando **Google Cloud Run**, el servicio *serverless* de Google. Este servicio se encarga de gestionar el contenedor **Docker** generado para la página.
+
+<img src="images/app1.png" alt="Alt text 1" width="300"/> 
+
+## Siguientes pasos
+
+Es necesario recabar más datos para ampliar el rango de precios y las categorias de propiedades cubiertas por el modelo. Con más datos se puede cubrir propiedades por encima de los US $130 000, límite actual del modelo, y además se puede incluir terrenos, quintas y casas de varios pisos en el mismo. 
+
+También, con una recolección de datos más amplia, es posible extender el análisis para cubrir otras ciudades en el país.
+
+## API
+
+Para mayor detalle: [Link al repositorio de la API](https://github.com/a-jimenezc/bienes_raices_scz_api "Clic para acceder al repositorio").
+
+
+## Licencia 
+
+GNU General Public License v2.0
+
+## Autor
+
+Antonio Jimenez Caballero
+
+## Contacto
+
+[Linkedin](https://www.linkedin.com/in/antonio-jimnzc/)
+
