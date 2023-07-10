@@ -37,7 +37,7 @@ Es necesario recolectar datos de diferentes especies y enfermedades relevantes e
 
 ## Licencia 
 
-GNU General Public License v2.0
+AGPL-3.0 license 
 
 ## Autor
 
