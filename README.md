@@ -1,5 +1,7 @@
 # Detector de Enfermedades de Plantas
 
+English | [Español](README_es.md)
+
 ## Resumen del proyecto
 
 * Se construye una página web que permite subir una fotografía de las hojas de una planta y, a partir de esta,  detectar el tipo de hoja y el tipo de enfermedad en la misma.
