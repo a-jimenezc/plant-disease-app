@@ -1,53 +1,52 @@
-# Detector de Enfermedades de Plantas
+# Plant Disease Detector
 
 English | [Español](README_es.md)
 
-## Resumen del proyecto
+## Project Summary
 
-* Se construye una página web que permite subir una fotografía de las hojas de una planta y, a partir de esta,  detectar el tipo de hoja y el tipo de enfermedad en la misma.
-* Para tal propósito se usó el algoritmo de detección de objetos [**YOLOv7**](https://arxiv.org/abs/2207.02696) y su implementación open-source hecha por [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7).
-* El algoritmo está implementado en Pythorch, pero la inferencia se realiza usando el formato **ONNX**. Para detalles sobre el proceso de entrenamiento visitar: [yolov7_plantdoc](https://github.com/a-jimenezc/yolov7_plantdoc).
-* La base de datos utilizada fue: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). En esta se tienen **13 especies** y hasta **17 enfermedades diferentes**.
-* La página web se desplegó utilizando **Docker** y el servicio *serverless* de **Google Cloud Platfom**: Cloud Run.
+* This is the repo for a web application that allows users to upload a photograph of a plant's leaves and, based on this, detect the type of leaf and any diseases present.
+* For this purpose, the object detection algorithm [**YOLOv7**](https://arxiv.org/abs/2207.02696) and its open-source implementation by [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7) were used.
+* The algorithm is implemented in PyTorch, but inference is done using the **ONNX** format. For details on the training process, visit: [yolov7_plantdoc](https://github.com/a-jimenezc/yolov7_plantdoc).
+* The database used is: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). It contains **13 species** and up to **17 different diseases**.
+* The website was deployed using **Docker** and Google Cloud Platform's **serverless** service: Cloud Run.
 
-## Requerimientos
+## Requirements
 
-* **Versión de Python:** 3.9
-* **Librerias:** numpy, pandas, open-cv, dash, ONNX runtime.
-* **Instalación:** requirements.txt
+* **Python Version:** 3.9
+* **Libraries:** numpy, pandas, open-cv, dash, ONNX runtime.
+* **Installation:** requirements.txt
 
-## Página Web
+## Website
 
-El siguiente es el enlace a la página web, hosting provisto por Google Cloud:
+Here is the link to the website, hosted by Google Cloud:
 
-[plant-disease-app-q3sojgpqiq-uc.a.run.app](https://plant-disease-app-q3sojgpqiq-uc.a.run.app/)
+[plant-disease.dsapp.me](https://plant-disease-app-q3sojgpqiq-uc.a.run.app/)
 
-<img src="images/app.png" alt="Alt text 1" width="500"/> 
+<img src="images/app.png" alt="Screenshot" width="500"/> 
 
-## Base de datos: Plantdoc
-* se tienen 28 diferentes clases, con la siguiente distribución.
+## Database: Plantdoc
+* There are 28 different classes, distributed as follows.
   
-  <img src="images/distr.png" alt="Alt text 1" width="500"/>
+  <img src="images/distr.png" alt="Distribution" width="500"/>
 
-* La base de datos original se encuentrá en inglés, por lo que fue necesario traducir. A continuación se detallan las traducciones utilizadas:
+* The original database is in English, so it was necessary to translate it to Spanish. Below are the translations used:
 
-  <img src="images/trad.png" alt="Alt text 1" width="500"/>
+  <img src="images/trad.png" alt="Translations" width="500"/>
 
-## Siguientes pasos
+## Next Steps
 
-Es necesario recolectar datos de diferentes especies y enfermedades relevantes en nuestra región. Con esto se puede asegurar una mayor utilidad en la herremienta.
+It is necessary to collect data from different species and relevant diseases in Bolivia to ensure greater utility of the tool.
 
-También es necesario aplicar técnicas de *data augmentation* para incrementar el desempeño del modelo.
+It is also necessary to apply data augmentation techniques to improve the model's performance.
 
-
-## Licencia 
+## License 
 
 GNU Affero General Public License v3.0
 
-## Autor
+## Author
 
 Antonio Jimenez Caballero
 
-## Contacto
+## Contact
 
-[Linkedin](https://www.linkedin.com/in/antonio-jimnzc/)
+[LinkedIn](https://www.linkedin.com/in/antonio-jimnzc/)
