@@ -20,7 +20,7 @@ English | [Español](README_es.md)
 
 Here is the link to the website, hosted by Google Cloud:
 
-[plant-disease.dsapp.me](https://plant-disease-app-q3sojgpqiq-uc.a.run.app/)
+[plant-disease.dsapp.me](https://plant-disease.dsapp.me/)
 
 <img src="images/app.png" alt="Screenshot" width="500"/> 
 
