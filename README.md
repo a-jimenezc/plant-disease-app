@@ -4,12 +4,11 @@ English | [Español](README_es.md)
 
 ## Project Summary
 
-* This is the repo for a web application that allows users to upload a photograph of a plant's leaves and, based on this, detect the type of leaf and any diseases present.
+* This is the repo for a web application that allows users to upload a photograph of a plant's leaves and, based on this, detect the type of leaf and any diseases present. The web application is intended for Spanish-speaking users.
 * For this purpose, the object detection algorithm [**YOLOv7**](https://arxiv.org/abs/2207.02696) and its open-source implementation by [Wong Kin Yiu](https://github.com/WongKinYiu/yolov7) were used.
 * The algorithm is implemented in PyTorch, but inference is done using the **ONNX** format. For details on the training process, visit: [yolov7_plantdoc](https://github.com/a-jimenezc/yolov7_plantdoc).
 * The database used is: [PlantDoc: A Dataset for Visual Plant Disease Detection](https://github.com/pratikkayal/PlantDoc-Dataset). It contains **13 species** and up to **17 different diseases**.
 * The website was deployed using **Docker** and Google Cloud Platform's **serverless** service: Cloud Run.
-
 ## Requirements
 
 * **Python Version:** 3.9
